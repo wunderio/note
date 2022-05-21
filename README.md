@@ -27,3 +27,25 @@ Symfony based note API. Provides JSON API endpoints to create, read, update and 
 7. Create **Pull Request on your own repository describing changes**. Add manual testing scenarios for each functionality in PR.
 8. (Optional) Write unit or web tests.
 9. Send us a link to your PR.
+
+## Readme
+
+Adding phpmyadmin to docker: 
+1. Added following lines to docker-compose.yml:
+phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: pma
+    links:
+      - db
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    restart: always
+    ports:
+      - 8081:80
+
+2. Ran 'docker-compose up -d'
+3. Access phpmyadmin at http://localhost:8081/ (user - "symfony", password - "symfony")
+
+
