@@ -49,3 +49,10 @@ phpmyadmin:
 3. Access phpmyadmin at http://localhost:8081/ (user - "symfony", password - "symfony")
 
 
+Generating Note entity and CRUD functionality to project:
+1. Running 'php bin/console make:entity' to generate entity Note 
+2. Run migrations
+3. Running 'php bin/console make:crud' to generate CRUD functionality
+4. Adjusting NoteController.php to use JSON format instead of html and to conform with test goals
+5. Creating a Postman collection to test CRUD
+
