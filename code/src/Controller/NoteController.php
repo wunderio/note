@@ -40,8 +40,6 @@ class NoteController extends AbstractController
     #[Route('/{id}', name: 'note_show', methods: ['GET', 'PUT', 'DELETE'])]
     public function show( Request $request, Note $note): Response
     {
-        
-
         switch ( $request->getMethod()) {
             case 'GET':
                 return new JsonResponse($note);
@@ -49,7 +47,6 @@ class NoteController extends AbstractController
             case 'PUT':
                 $note->setTitle($request->get('title'));
                 $note->setText($request->get('text'));
-     
                 $this->getDoctrine()->getManager()->persist($note);
                 $this->getDoctrine()->getManager()->flush();
                 return new JsonResponse(['message' => 'Note updated successfully.']);
@@ -64,35 +61,5 @@ class NoteController extends AbstractController
             default:
             return new JsonResponse(['message' => 'Unknown method.']);
         }
-    }
-
-    #[Route('/{id}/edit', name: 'note_edit', methods: ['GET','POST'])]
-    public function edit(Request $request, Note $note): Response
-    {
-        $form = $this->createForm(NoteType::class, $note);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('note_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('note/edit.html.twig', [
-            'note' => $note,
-            'form' => $form,
-        ]);
-    }
-
-    #[Route('/{id}', name: 'note_delete', methods: ['POST'])]
-    public function delete(Request $request, Note $note): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$note->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($note);
-            $entityManager->flush();
-        }
-
-        return $this->redirectToRoute('note_index', [], Response::HTTP_SEE_OTHER);
     }
 }

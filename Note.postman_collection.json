@@ -1,0 +1,192 @@
+{
+	"info": {
+		"_postman_id": "804d151d-b087-4827-a71f-043128617205",
+		"name": "Note",
+		"description": "Postman collection for Note api CRUD functionality testing in Json.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16409561"
+	},
+	"item": [
+		{
+			"name": "Get all notes",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:8001/notes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"notes"
+					]
+				},
+				"description": "Gets all Note objects from DB."
+			},
+			"response": []
+		},
+		{
+			"name": "Create note",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "TestNote1",
+							"type": "text"
+						},
+						{
+							"key": "text",
+							"value": "text goes here",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8001/notes/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"notes",
+						"add"
+					]
+				},
+				"description": "Creates new Note object, adds it to DB.  \n  \nValues for the fields of the creatable notes have to be added in request body."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Note by ID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:8001/notes/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"notes",
+						"1"
+					]
+				},
+				"description": "Gets specific Note by ID (default ID = 1, can change the url as needed)."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Note by ID",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:8001/notes/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"notes",
+						"1"
+					]
+				},
+				"description": "StartFragment\n\nDeletes specific Note by ID (default ID = 1, can change the url as needed).\n\nEndFragment"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Note by ID",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:8001/notes/1?title=new title&text=new text goes here",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"notes",
+						"1"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "new title"
+						},
+						{
+							"key": "text",
+							"value": "new text goes here"
+						}
+					]
+				},
+				"description": "Updates specific Note by ID (default ID = 1, can change the url as needed).\n\nNew values for the updatable fields have to be added in request query."
+			},
+			"response": []
+		}
+	]
+}
