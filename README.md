@@ -1,3 +1,7 @@
+#
+Just testing.
+
+
 # Note API
 
 Symfony based note API. Provides JSON API endpoints to create, read, update and delete notes.
